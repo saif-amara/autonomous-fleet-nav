@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+
+  # ThingsBoard IoT Platform
+  thingsboard:
+    image: thingsboard/tb-postgres
+    container_name: thingsboard
+    restart: always
+    ports:
+      - "9090:9090"
+      - "1883:1883"
+      - "7070:7070"
+      - "5683-5688:5683-5688/udp"
+    volumes:
+      - tb-data:/data
+      - tb-logs:/var/log/thingsboard
+    environment:
+      TB_QUEUE_TYPE: in-memory
+
+  # Mosquitto MQTT Broker
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: mosquitto
+    restart: always
+    ports:
+      - "1884:1883"
+      - "9001:9001"
+    volumes:
+      - mosquitto-data:/mosquitto/data
+      - mosquitto-logs:/mosquitto/log
+    command: mosquitto -c /mosquitto-no-auth.conf
+
+volumes:
+  tb-data:
+  tb-logs:
+  mosquitto-data:
+  mosquitto-logs:
