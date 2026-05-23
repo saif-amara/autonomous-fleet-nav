@@ -158,5 +158,4 @@ features = [
 ## 👤 Author
 
 **Saif Eddine Amara**
-Teaching Assistant — Robotics Lab, ISSAT Sousse
-Embedded Systems & Avionics Engineer
+ Embedded Systems Engineering Student — ISSAT Sousse, Tunisia Teaching Assistant, Robotics Lab
